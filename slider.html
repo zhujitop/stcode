@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(60px);
+}
+
+/* 新增的样式 */
+.switch span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 12px;
+}
+
+.switch .off {
+  right: 10px;
+}
+
+.switch .on {
+  left: 10px;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<h2>滑动开关按钮</h2>
+
+<label class="switch">
+  <input type="checkbox" id="toggleSwitch" onchange="toggleSwitch(this)">
+  <span class="slider round">
+    <span class="off">关闭</span>
+    <span class="on">开启</span>
+  </span>
+</label>
+
+<script>
+function toggleSwitch(element) {
+  var on = element.parentNode.querySelector('.on');
+  var off = element.parentNode.querySelector('.off');
+  if (element.checked) {
+    on.style.display = 'block';
+    off.style.display = 'none';
+  } else {
+    on.style.display = 'none';
+    off.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
